@@ -61,9 +61,9 @@ time_table_create = (""" CREATE TABLE IF NOT EXISTS time
 
 # INSERT RECORDS
 
-songplay_table_insert = (""" INSERT INTO songplays (songplay_id,  start_time, user_id, level, 
+songplay_table_insert = (""" INSERT INTO songplays (start_time, user_id, level, 
                           song_id, artist_id, session_id, location, user_agent)
-                          VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
+                          VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
                           on conflict (songplay_id) do nothing
 """)
 
