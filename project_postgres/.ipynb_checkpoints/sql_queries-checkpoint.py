@@ -1,16 +1,16 @@
 # DROP TABLES
 
-songplay_table_drop = "DROP TABLE songplays"
-user_table_drop = "DROP TABLE users"
-song_table_drop = "DROP TABLE songs"
-artist_table_drop = "DROP TABLE artists"
-time_table_drop = "DROP TABLE time"
+songplay_table_drop = "DROP TABLE IF EXISTS songplays"
+user_table_drop = "DROP TABLE IF EXISTS users"
+song_table_drop = "DROP TABLE IF EXISTS songs"
+artist_table_drop = "DROP TABLE IF EXISTS artists"
+time_table_drop = "DROP TABLE IF EXISTS time"
 
 # CREATE TABLES
 
 songplay_table_create = (""" CREATE TABLE IF NOT EXISTS songplays
                              (songplay_id SERIAL PRIMARY KEY,  
-                             start_time time REFERENCES time(start_time), 
+                             start_time timestamp REFERENCES time(start_time), 
                              user_id int REFERENCES users(user_id), 
                              level varchar,
                              song_id varchar REFERENCES songs(song_id), 
@@ -49,7 +49,7 @@ artist_table_create = (""" CREATE TABLE IF NOT EXISTS artists
 
 
 time_table_create = (""" CREATE TABLE IF NOT EXISTS time
-                         (start_time time PRIMARY KEY, 
+                         (start_time timestamp PRIMARY KEY, 
                          hour int, 
                          day int, 
                          week int, 
