@@ -1,4 +1,4 @@
-<h4>PROJECT : DATA WAREHOUSE</h4>
+<h4>PROJECT : DATA PIPELINES WITH AIRFLOW</h4>
 Sparkify’s analytical team wants to analyze the data collected on songs and user activity on their new streaming app. They want to analyze what songs users are listening to. The user activity logs and song metadata is available to analyze for this specific use case.  <br><br>
 The data is available in JSON format on S3 buckets, needs to be transformed using apache airflow dags to be further structured and put into respective facts and dimension tables in redshift. ETL pipeline to be created to carry out the transformation. The project will use AWS, python, sql, apache airflow to create the pipeline.<br><br>
 

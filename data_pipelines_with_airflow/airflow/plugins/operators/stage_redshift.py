@@ -34,7 +34,7 @@ class StageToRedshiftOperator(BaseOperator):
                  s3_bucket="",
                  s3_key="",
                  file_format="",
-                 append=""
+                 append=True,
                  *args, **kwargs):
         """ Constructor for the class object, also calls the constructor 
             of base class to set the necessary parameters"""
@@ -57,20 +57,19 @@ class StageToRedshiftOperator(BaseOperator):
         redshift = PostgresHook(postgres_conn_id=self.redshift_conn_id)
         s3_path = "s3://{}/{}".format(self.s3_bucket, self.s3_key)
         
-        
-        if append:
-            self.log.info("Copying data from S3 to {}".format(self.table)))
-            formatted_sql = StageToRedshiftOperator.copy_sql_log.format(
+        self.log.info("Copying data from S3 to {}".format(self.table))
+        formatted_sql = StageToRedshiftOperator.copy_sql.format(
                 self.table,
                 s3_path,
                 credentials.access_key,
                 credentials.secret_key,
-                self.file_format
-            )
-        else:
-            self.log.info("Append false, performing truncate and re-load on {}".format(self.table))
-            delete_sql = delete_sql.format(self.table)
-            redshift.run(delete_sql)
+                self.file_format)
+               
+        if not self.append:
+            self.log.info("Append false, performing truncate and \
+                           re-load on {}".format(self.table))
+            delete = StageToRedshiftOperator.delete_sql.format(self.table)
+            redshift.run(delete)
         
         redshift.run(formatted_sql)
         self.log.info("Done Loading..")

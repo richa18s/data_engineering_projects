@@ -22,6 +22,7 @@ from airflow.operators import (StageToRedshiftOperator, LoadFactOperator,
                                 LoadDimensionOperator, DataQualityOperator,
                                 CreateTableOperator)
 from helpers import SqlQueries
+from helpers import DataQualityChecks
 
 #. Default arguments for dag
 default_args = {
@@ -141,7 +142,7 @@ run_quality_checks = DataQualityOperator(
     task_id='Run_data_quality_checks',
     dag=dag,
     redshift_conn_id="redshift",
-    table=["songplays", "users", "songs", "artists", "time"],
+    dq_checks=DataQualityChecks.list_of_checks
 )
 
 
