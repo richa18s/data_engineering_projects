@@ -1,6 +1,6 @@
 """
     Author:
-        Udacity, RichaS
+        RichaS
     Date Created:
         06/12/2021
     Description:
