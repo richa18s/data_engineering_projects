@@ -1,8 +1,5 @@
 from scripts import config as c
 
-# import config as c
-
-
 
 class ReadSchema:
 

@@ -1,10 +1,3 @@
-# import spark as s
-# import read_from_s3 as e
-# import dim_transform as d
-# import fact_transform as f
-# import write_to_s3 as w
-
-
 from scripts import spark as s
 from scripts import read_from_s3 as e
 from scripts import dim_transform as d

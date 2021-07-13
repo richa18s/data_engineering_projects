@@ -1,9 +1,6 @@
 from scripts import config as c
 from pyspark.sql import SparkSession
 
-# import config as c
-
-
 
 class CreateSession:
 
