@@ -1,6 +1,5 @@
 from pyspark.sql.types import IntegerType, StringType, DoubleType
 import pyspark.sql.functions as F
-from pyspark.sql.functions import udf
 
 
 class CleanAndTransformDim:
@@ -8,9 +7,14 @@ class CleanAndTransformDim:
     @staticmethod
     def dim_visa(visa_df, immigration_data_df):
         """
-        :param visa_df:
-        :param immigration_data_df:
-        :return:
+        This method does the following transformations:
+        - change the data type of visa code to integer
+        - assign proper alias to columns
+        - join with immigration event data to also get the visa type
+        - create a dim table / df for visa
+        :param visa_df: intermediate visa data frame
+        :param immigration_data_df: intermediate immigration data frame
+        :return: visa dimension
         """
         visa_df_stg = (
             immigration_data_df
@@ -38,8 +42,11 @@ class CleanAndTransformDim:
     @staticmethod
     def dim_mode(mode_df):
         """
-        :param mode_df:
-        :return:
+        This method does following transformations:
+        - assign correct data type to code
+        - assign meaningful aliases to columns
+        :param mode_df: intermediate mode data frame
+        :return: mode dimension
         """
         mode_dim = (
             mode_df
@@ -56,8 +63,11 @@ class CleanAndTransformDim:
     @staticmethod
     def dim_country(country_df):
         """
-        :param country_df:
-        :return:
+        This method does following transformations:
+        - Select only valid codes to create this data set eliminate the invalid code.
+        - Type cast code to have integer data type
+        :param country_df: intermediate country data frame
+        :return: country dimension
         """
         country_dim = (
             country_df
@@ -75,8 +85,9 @@ class CleanAndTransformDim:
     @staticmethod
     def dim_ports(ports_df):
         """
-        :param ports_df:
-        :return:
+        Method transform the intermediate ports data frame to select only valid codes to create ports dim
+        :param ports_df: intermediate ports data frame
+        :return: ports dimension
         """
         ports_dim = (
             ports_df
@@ -89,8 +100,16 @@ class CleanAndTransformDim:
     @staticmethod
     def dim_airports(airport_codes_df):
         """
-        :param airport_codes_df:
-        :return:
+        This method does following transformations on intermediate airports df:
+        - Select records that have proper IATA Code
+        - Split coordinates to separate columns latitude and longitude
+        - Typecast the columns where ever needed
+        - Remove any duplicate records
+        - Removing any leading '0' from local codes
+        - Replace nulls with proper code : 'UNKNOWN'
+        - Assign correct alias where necessary
+        :param airport_codes_df: intermediate airport data frame
+        :return: airports dimension
         """
 
         remove_padding = F.udf(lambda x: x.lstrip('0') if x else '0', StringType())
@@ -133,9 +152,14 @@ class CleanAndTransformDim:
     @staticmethod
     def dim_states(states_df, city_df):
         """
-        :param states_df:
-        :param city_df:
-        :return:
+        This method does following transformations on intermediate state and city df:
+        - Get the state data from states df and city data from city df and combine those to create one dimension that has state_code,
+          state_name, list of cities in states, their respective population
+        - Assign correct alias where necessary
+        - Remove duplicates from states and city df before joining these two data sets
+        :param states_df: intermediate states df
+        :param city_df: intermediate city df
+        :return: states dimension
         """
         city_df_stg = (
             city_df
@@ -173,8 +197,13 @@ class CleanAndTransformDim:
     @staticmethod
     def dim_time(immigration_data_df):
         """
-        :param immigration_data_df:
-        :return:
+        This method does following transformations on immigration data to get data for date dimension
+        - This dimension would be useful when any analysis needs to be performed w.r.t specific date, month, year or quarter
+        - There are other ways to create time dim but for this specific use case get all the arrival and departure dates from i94 immigrantion data
+        - Get a union of both the data sets, eliminate duplicates
+        - Extract year, month, day, date key, quarter, day_of_month, day_of_week, week_of_year from the date and assign to appropiate columns
+        :param immigration_data_df: intermediate immigration data frame
+        :return: date dimension
         """
         time_df_a = (
             immigration_data_df
@@ -218,8 +247,13 @@ class CleanAndTransformDim:
     @staticmethod
     def dim_non_imm(immigration_data_df):
         """
-        :param immigration_data_df:
-        :return:
+        This method derives non immigrant information from immigration records
+        - This data is retrieved from I94 immigration event data
+        - Data that is relevant to immigrant like cicid, birth year, gender, occup, country of residence that is not going to change frequently can be put in separate dimension for analysis on immigrants related data
+        - Retrieve the above columns, typecast and assign aliases wherever necessary
+        - Replace nulls with code : UNKNOWN or UNK
+        :param immigration_data_df: intermediate immigration df
+        :return: non immigrant dimension
         """
         non_imm_dim = (
             immigration_data_df

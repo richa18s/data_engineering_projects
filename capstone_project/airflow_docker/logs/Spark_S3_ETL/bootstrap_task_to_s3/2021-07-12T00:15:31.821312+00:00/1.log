@@ -1,0 +1,26 @@
+[2021-07-12 00:15:34,468] {taskinstance.py:876} INFO - Dependencies all met for <TaskInstance: Spark_S3_ETL.bootstrap_task_to_s3 2021-07-12T00:15:31.821312+00:00 [queued]>
+[2021-07-12 00:15:34,519] {taskinstance.py:876} INFO - Dependencies all met for <TaskInstance: Spark_S3_ETL.bootstrap_task_to_s3 2021-07-12T00:15:31.821312+00:00 [queued]>
+[2021-07-12 00:15:34,526] {taskinstance.py:1067} INFO - 
+--------------------------------------------------------------------------------
+[2021-07-12 00:15:34,529] {taskinstance.py:1068} INFO - Starting attempt 1 of 1
+[2021-07-12 00:15:34,537] {taskinstance.py:1069} INFO - 
+--------------------------------------------------------------------------------
+[2021-07-12 00:15:34,637] {taskinstance.py:1087} INFO - Executing <Task(PythonOperator): bootstrap_task_to_s3> on 2021-07-12T00:15:31.821312+00:00
+[2021-07-12 00:15:34,667] {standard_task_runner.py:52} INFO - Started process 1080 to run task
+[2021-07-12 00:15:34,710] {standard_task_runner.py:76} INFO - Running: ['***', 'tasks', 'run', 'Spark_S3_ETL', 'bootstrap_task_to_s3', '2021-07-12T00:15:31.821312+00:00', '--job-id', '28', '--pool', 'default_pool', '--raw', '--subdir', 'DAGS_FOLDER/dag.py', '--cfg-path', '/tmp/tmpfx44cb25', '--error-file', '/tmp/tmpvp1hm6pc']
+[2021-07-12 00:15:34,734] {standard_task_runner.py:77} INFO - Job 28: Subtask bootstrap_task_to_s3
+[2021-07-12 00:15:34,930] {logging_mixin.py:104} INFO - Running <TaskInstance: Spark_S3_ETL.bootstrap_task_to_s3 2021-07-12T00:15:31.821312+00:00 [running]> on host ae6e515e2a1e
+[2021-07-12 00:15:35,143] {taskinstance.py:1282} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=CapstoneProject
+AIRFLOW_CTX_DAG_ID=Spark_S3_ETL
+AIRFLOW_CTX_TASK_ID=bootstrap_task_to_s3
+AIRFLOW_CTX_EXECUTION_DATE=2021-07-12T00:15:31.821312+00:00
+AIRFLOW_CTX_DAG_RUN_ID=manual__2021-07-12T00:15:31.821312+00:00
+[2021-07-12 00:15:35,148] {base_aws.py:368} INFO - Airflow Connection: aws_conn_id=aws_credentials
+[2021-07-12 00:15:35,169] {base_aws.py:166} INFO - Credentials retrieved from login
+[2021-07-12 00:15:35,170] {base_aws.py:87} INFO - Creating session with aws_access_key_id=AKIA3HDBV2JOOPSAIFST region_name=None
+[2021-07-12 00:15:35,229] {base_aws.py:157} INFO - role_arn is None
+[2021-07-12 00:15:35,938] {python.py:151} INFO - Done. Returned value was: None
+[2021-07-12 00:15:35,955] {taskinstance.py:1191} INFO - Marking task as SUCCESS. dag_id=Spark_S3_ETL, task_id=bootstrap_task_to_s3, execution_date=20210712T001531, start_date=20210712T001534, end_date=20210712T001535
+[2021-07-12 00:15:36,017] {taskinstance.py:1245} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2021-07-12 00:15:36,080] {local_task_job.py:151} INFO - Task exited with return code 0

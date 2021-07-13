@@ -1,0 +1,43 @@
+[2021-07-12 00:54:16,741] {taskinstance.py:876} INFO - Dependencies all met for <TaskInstance: Spark_S3_ETL.create_emr_cluster 2021-07-12T00:54:07.119045+00:00 [queued]>
+[2021-07-12 00:54:16,757] {taskinstance.py:876} INFO - Dependencies all met for <TaskInstance: Spark_S3_ETL.create_emr_cluster 2021-07-12T00:54:07.119045+00:00 [queued]>
+[2021-07-12 00:54:16,760] {taskinstance.py:1067} INFO - 
+--------------------------------------------------------------------------------
+[2021-07-12 00:54:16,761] {taskinstance.py:1068} INFO - Starting attempt 1 of 1
+[2021-07-12 00:54:16,764] {taskinstance.py:1069} INFO - 
+--------------------------------------------------------------------------------
+[2021-07-12 00:54:16,779] {taskinstance.py:1087} INFO - Executing <Task(EmrCreateJobFlowOperator): create_emr_cluster> on 2021-07-12T00:54:07.119045+00:00
+[2021-07-12 00:54:16,788] {standard_task_runner.py:52} INFO - Started process 3543 to run task
+[2021-07-12 00:54:16,793] {standard_task_runner.py:76} INFO - Running: ['***', 'tasks', 'run', 'Spark_S3_ETL', 'create_emr_cluster', '2021-07-12T00:54:07.119045+00:00', '--job-id', '53', '--pool', 'default_pool', '--raw', '--subdir', 'DAGS_FOLDER/dag.py', '--cfg-path', '/tmp/tmp9ruse0ep', '--error-file', '/tmp/tmpf9i73onx']
+[2021-07-12 00:54:16,795] {standard_task_runner.py:77} INFO - Job 53: Subtask create_emr_cluster
+[2021-07-12 00:54:16,867] {logging_mixin.py:104} INFO - Running <TaskInstance: Spark_S3_ETL.create_emr_cluster 2021-07-12T00:54:07.119045+00:00 [running]> on host ae6e515e2a1e
+[2021-07-12 00:54:16,959] {taskinstance.py:1282} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=CapstoneProject
+AIRFLOW_CTX_DAG_ID=Spark_S3_ETL
+AIRFLOW_CTX_TASK_ID=create_emr_cluster
+AIRFLOW_CTX_EXECUTION_DATE=2021-07-12T00:54:07.119045+00:00
+AIRFLOW_CTX_DAG_RUN_ID=manual__2021-07-12T00:54:07.119045+00:00
+[2021-07-12 00:54:16,961] {emr_create_job_flow.py:73} INFO - Creating JobFlow using aws-conn-id: aws_credentials, emr-conn-id: emr_default
+[2021-07-12 00:54:16,973] {base_aws.py:368} INFO - Airflow Connection: aws_conn_id=aws_credentials
+[2021-07-12 00:54:16,987] {base_aws.py:166} INFO - Credentials retrieved from login
+[2021-07-12 00:54:16,989] {base_aws.py:82} INFO - Retrieving region_name from Connection.extra_config['region_name']
+[2021-07-12 00:54:16,990] {base_aws.py:87} INFO - Creating session with aws_access_key_id=AKIA3HDBV2JOOPSAIFST region_name=us-east-1
+[2021-07-12 00:54:17,006] {base_aws.py:157} INFO - role_arn is None
+[2021-07-12 00:54:17,484] {taskinstance.py:1481} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1137, in _run_raw_task
+    self._prepare_and_execute_task_with_callbacks(context, task)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1311, in _prepare_and_execute_task_with_callbacks
+    result = self._execute_task(context, task_copy)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1341, in _execute_task
+    result = task_copy.execute(context=context)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/providers/amazon/aws/operators/emr_create_job_flow.py", line 81, in execute
+    response = emr.create_job_flow(job_flow_overrides)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/providers/amazon/aws/hooks/emr.py", line 88, in create_job_flow
+    response = self.get_conn().run_job_flow(**config)
+  File "/home/airflow/.local/lib/python3.6/site-packages/botocore/client.py", line 357, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+  File "/home/airflow/.local/lib/python3.6/site-packages/botocore/client.py", line 676, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.exceptions.ClientError: An error occurred (AccessDeniedException) when calling the RunJobFlow operation: User: arn:aws:iam::771151483484:user/Admin is not authorized to perform: iam:PassRole on resource: arn:aws:iam::771151483484:role/EMR_DefaultRole with an explicit deny
+[2021-07-12 00:54:17,488] {taskinstance.py:1531} INFO - Marking task as FAILED. dag_id=Spark_S3_ETL, task_id=create_emr_cluster, execution_date=20210712T005407, start_date=20210712T005416, end_date=20210712T005417
+[2021-07-12 00:54:17,541] {local_task_job.py:151} INFO - Task exited with return code 1

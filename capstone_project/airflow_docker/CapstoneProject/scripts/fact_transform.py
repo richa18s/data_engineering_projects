@@ -1,7 +1,6 @@
-from pyspark.sql.types import IntegerType, StringType
+from pyspark.sql.types import IntegerType, StringType, LongType
 import pyspark.sql.functions as F
 
-from pyspark.sql.functions import udf
 
 class CleanAndTransformFact:
 
@@ -14,14 +13,31 @@ class CleanAndTransformFact:
                          visa_dim,
                          states_dim):
         """
-        :param immigration_data_df:
-        :param ports_dim:
-        :param airports_dim:
-        :param mode_dim:
-        :param country_dim:
-        :param visa_dim:
-        :param states_dim:
-        :return:
+
+        Performs following transformation on immigration data :
+        - Transform arrival and departure date to mm/dd/yyyy format
+        - Remove leading '0' from flight no
+        - Rename the columns to more readable names
+        - Assign UNKNOWN to nulls values if the value is not known
+        - Where ever the mode of travel is not 'Air' assign 'Not Applicable' to airline Column
+        - Cast col adm_num to long type and cicid, country_of_origin, arr_mode_code, visa_code to Integer
+        - Get the distinct ports from ports dim and local code from airport dim and create an intermediate data frame
+          that has union of list of codes from both airport and port dims
+        - semi left join following dims to ensure the immigration fact table has valid data (foreign key dependency)
+        - mode_dim on mode_code
+        - country_dim on country code
+        - visa_dim on visa code
+        - intermediate ports dim (airports_dim local codes + port from ports_dim) on port code
+        - states_dim on state_code
+
+        :param immigration_data_df: intermediate immigration data frame
+        :param ports_dim: ports dimension table
+        :param airports_dim: airports dimension table
+        :param mode_dim: mode dimension table
+        :param country_dim: country dimension table
+        :param visa_dim: visa dimension table
+        :param states_dim: states dimension table
+        :return: immigration fact table
         """
 
         remove_padding = F.udf(lambda x: x.lstrip('0') if x else '0', StringType())
@@ -40,6 +56,7 @@ class CleanAndTransformFact:
         df_imm_stg = (
             df_imm_stg
                 .select(
+                    F.col("admnum").cast(LongType()).alias("adm_num"),
                     F.col("cicid").cast(IntegerType()).alias("cic_id"),
                     F.col("i94cit").cast(IntegerType()).alias("country_of_origin"),
                     F.col("i94port").alias("arr_port"),

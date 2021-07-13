@@ -15,12 +15,17 @@ from scripts import write_to_s3 as w
 
 def main():
     """
-    :return:
+    Main ETL method that invoke the methods to
+        - create spark session
+        - read the data files from s3
+        - transform the data into dim and fact tables
+        - load the data into s3 schema
+    :return: None
     """
 
     # Create Spark session
     # spark = s.CreateSession.create_spark_session('Immigration')
-    spark = s.CreateSession.create_spark_session('ProcessImmigrationRecords')
+    spark, logger = s.CreateSession.create_spark_session('ProcessImmigrationRecords')
 
 
     # Create object of ExtractData to read data from S3

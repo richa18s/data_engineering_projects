@@ -1,11 +1,21 @@
 from scripts import config as c
 from pyspark.sql import SparkSession
 
+# import config as c
+
+
 
 class CreateSession:
 
     @staticmethod
     def create_spark_session(app_name):
+        """
+        Method to create SparkSession, an entry point to Spark to write DataFrame
+        Add the spark jars to the Spark configuration to make them available for use
+        set aws access id and secret access key
+        :param app_name: name of the application
+        :return: logger, spark session
+        """
 
         spark_builder = (
             SparkSession
@@ -24,4 +34,8 @@ class CreateSession:
         spark_session._jsc.hadoopConfiguration().set(
             "fs.s3.buffer.dir", c.ReadConfig.getconfig('DEPENDENCIES','buffer_dir'))
 
-        return spark_session
+        log4jLogger = spark_session._jvm.org.apache.log4j
+        logger = log4jLogger.LogManager.getLogger(__name__)
+        logger.setLevel(log4jLogger.Level.INFO)
+
+        return spark_session, logger

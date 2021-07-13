@@ -1,0 +1,28 @@
+[2021-07-13 00:19:23,031] {taskinstance.py:876} INFO - Dependencies all met for <TaskInstance: Spark_S3_ETL.run_etl_spark 2021-07-12T00:54:07.119045+00:00 [queued]>
+[2021-07-13 00:19:23,058] {taskinstance.py:876} INFO - Dependencies all met for <TaskInstance: Spark_S3_ETL.run_etl_spark 2021-07-12T00:54:07.119045+00:00 [queued]>
+[2021-07-13 00:19:23,059] {taskinstance.py:1067} INFO - 
+--------------------------------------------------------------------------------
+[2021-07-13 00:19:23,060] {taskinstance.py:1068} INFO - Starting attempt 1 of 1
+[2021-07-13 00:19:23,064] {taskinstance.py:1069} INFO - 
+--------------------------------------------------------------------------------
+[2021-07-13 00:19:23,086] {taskinstance.py:1087} INFO - Executing <Task(EmrAddStepsOperator): run_etl_spark> on 2021-07-12T00:54:07.119045+00:00
+[2021-07-13 00:19:23,096] {standard_task_runner.py:52} INFO - Started process 2382 to run task
+[2021-07-13 00:19:23,101] {standard_task_runner.py:76} INFO - Running: ['***', 'tasks', 'run', 'Spark_S3_ETL', 'run_etl_spark', '2021-07-12T00:54:07.119045+00:00', '--job-id', '63', '--pool', 'default_pool', '--raw', '--subdir', 'DAGS_FOLDER/dag.py', '--cfg-path', '/tmp/tmphdubyd3m', '--error-file', '/tmp/tmp1pbga8u7']
+[2021-07-13 00:19:23,103] {standard_task_runner.py:77} INFO - Job 63: Subtask run_etl_spark
+[2021-07-13 00:19:23,184] {logging_mixin.py:104} INFO - Running <TaskInstance: Spark_S3_ETL.run_etl_spark 2021-07-12T00:54:07.119045+00:00 [running]> on host 3eb1e029fb42
+[2021-07-13 00:19:23,288] {taskinstance.py:1282} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=CapstoneProject
+AIRFLOW_CTX_DAG_ID=Spark_S3_ETL
+AIRFLOW_CTX_TASK_ID=run_etl_spark
+AIRFLOW_CTX_EXECUTION_DATE=2021-07-12T00:54:07.119045+00:00
+AIRFLOW_CTX_DAG_RUN_ID=manual__2021-07-12T00:54:07.119045+00:00
+[2021-07-13 00:19:23,290] {base_aws.py:368} INFO - Airflow Connection: aws_conn_id=aws_credentials
+[2021-07-13 00:19:23,301] {base_aws.py:166} INFO - Credentials retrieved from login
+[2021-07-13 00:19:23,303] {base_aws.py:82} INFO - Retrieving region_name from Connection.extra_config['region_name']
+[2021-07-13 00:19:23,304] {base_aws.py:87} INFO - Creating session with aws_access_key_id=AKIASWAINSLNFO6ZMHMS region_name=us-east-1
+[2021-07-13 00:19:23,320] {base_aws.py:157} INFO - role_arn is None
+[2021-07-13 00:19:23,378] {emr_add_steps.py:92} INFO - Adding steps to j-2R1V7YSKLK9KD
+[2021-07-13 00:19:23,865] {emr_add_steps.py:105} INFO - Steps ['s-KYD481VMWDMF'] added to JobFlow
+[2021-07-13 00:19:23,927] {taskinstance.py:1191} INFO - Marking task as SUCCESS. dag_id=Spark_S3_ETL, task_id=run_etl_spark, execution_date=20210712T005407, start_date=20210713T001923, end_date=20210713T001923
+[2021-07-13 00:19:23,972] {taskinstance.py:1245} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2021-07-13 00:19:24,015] {local_task_job.py:151} INFO - Task exited with return code 0

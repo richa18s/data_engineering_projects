@@ -1,0 +1,51 @@
+[2021-07-13 00:39:20,581] {taskinstance.py:876} INFO - Dependencies all met for <TaskInstance: Spark_S3_ETL.watch_step_etl 2021-07-13T00:39:08.339742+00:00 [queued]>
+[2021-07-13 00:39:20,616] {taskinstance.py:876} INFO - Dependencies all met for <TaskInstance: Spark_S3_ETL.watch_step_etl 2021-07-13T00:39:08.339742+00:00 [queued]>
+[2021-07-13 00:39:20,623] {taskinstance.py:1067} INFO - 
+--------------------------------------------------------------------------------
+[2021-07-13 00:39:20,627] {taskinstance.py:1068} INFO - Starting attempt 1 of 1
+[2021-07-13 00:39:20,636] {taskinstance.py:1069} INFO - 
+--------------------------------------------------------------------------------
+[2021-07-13 00:39:20,689] {taskinstance.py:1087} INFO - Executing <Task(EmrStepSensor): watch_step_etl> on 2021-07-13T00:39:08.339742+00:00
+[2021-07-13 00:39:20,728] {standard_task_runner.py:52} INFO - Started process 3553 to run task
+[2021-07-13 00:39:20,750] {standard_task_runner.py:76} INFO - Running: ['***', 'tasks', 'run', 'Spark_S3_ETL', 'watch_step_etl', '2021-07-13T00:39:08.339742+00:00', '--job-id', '73', '--pool', 'default_pool', '--raw', '--subdir', 'DAGS_FOLDER/dag.py', '--cfg-path', '/tmp/tmptv1ul22j', '--error-file', '/tmp/tmpf77o6bj9']
+[2021-07-13 00:39:20,753] {standard_task_runner.py:77} INFO - Job 73: Subtask watch_step_etl
+[2021-07-13 00:39:20,885] {logging_mixin.py:104} INFO - Running <TaskInstance: Spark_S3_ETL.watch_step_etl 2021-07-13T00:39:08.339742+00:00 [running]> on host 3eb1e029fb42
+[2021-07-13 00:39:21,119] {taskinstance.py:1282} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=CapstoneProject
+AIRFLOW_CTX_DAG_ID=Spark_S3_ETL
+AIRFLOW_CTX_TASK_ID=watch_step_etl
+AIRFLOW_CTX_EXECUTION_DATE=2021-07-13T00:39:08.339742+00:00
+AIRFLOW_CTX_DAG_RUN_ID=manual__2021-07-13T00:39:08.339742+00:00
+[2021-07-13 00:39:21,125] {base_aws.py:368} INFO - Airflow Connection: aws_conn_id=aws_credentials
+[2021-07-13 00:39:21,217] {base_aws.py:166} INFO - Credentials retrieved from login
+[2021-07-13 00:39:21,222] {base_aws.py:82} INFO - Retrieving region_name from Connection.extra_config['region_name']
+[2021-07-13 00:39:21,225] {base_aws.py:87} INFO - Creating session with aws_access_key_id=AKIASWAINSLNFO6ZMHMS region_name=us-east-1
+[2021-07-13 00:39:21,282] {base_aws.py:157} INFO - role_arn is None
+[2021-07-13 00:39:21,344] {emr_step.py:75} INFO - Poking step s-3GG9I4XFETKMM on cluster j-MS09R64S8EF
+[2021-07-13 00:39:21,784] {emr_base.py:68} INFO - Job flow currently PENDING
+[2021-07-13 00:40:21,774] {emr_step.py:75} INFO - Poking step s-3GG9I4XFETKMM on cluster j-MS09R64S8EF
+[2021-07-13 00:40:22,237] {emr_base.py:68} INFO - Job flow currently PENDING
+[2021-07-13 00:41:22,173] {emr_step.py:75} INFO - Poking step s-3GG9I4XFETKMM on cluster j-MS09R64S8EF
+[2021-07-13 00:41:22,646] {emr_base.py:68} INFO - Job flow currently PENDING
+[2021-07-13 00:42:22,602] {emr_step.py:75} INFO - Poking step s-3GG9I4XFETKMM on cluster j-MS09R64S8EF
+[2021-07-13 00:42:23,018] {emr_base.py:68} INFO - Job flow currently PENDING
+[2021-07-13 00:43:23,012] {emr_step.py:75} INFO - Poking step s-3GG9I4XFETKMM on cluster j-MS09R64S8EF
+[2021-07-13 00:43:23,525] {emr_base.py:68} INFO - Job flow currently PENDING
+[2021-07-13 00:44:23,506] {emr_step.py:75} INFO - Poking step s-3GG9I4XFETKMM on cluster j-MS09R64S8EF
+[2021-07-13 00:44:23,933] {emr_base.py:68} INFO - Job flow currently PENDING
+[2021-07-13 00:45:23,869] {emr_step.py:75} INFO - Poking step s-3GG9I4XFETKMM on cluster j-MS09R64S8EF
+[2021-07-13 00:45:24,346] {emr_base.py:68} INFO - Job flow currently PENDING
+[2021-07-13 00:46:24,333] {emr_step.py:75} INFO - Poking step s-3GG9I4XFETKMM on cluster j-MS09R64S8EF
+[2021-07-13 00:46:24,768] {emr_base.py:68} INFO - Job flow currently PENDING
+[2021-07-13 00:47:24,712] {emr_step.py:75} INFO - Poking step s-3GG9I4XFETKMM on cluster j-MS09R64S8EF
+[2021-07-13 00:47:25,201] {emr_base.py:68} INFO - Job flow currently PENDING
+[2021-07-13 00:48:25,182] {emr_step.py:75} INFO - Poking step s-3GG9I4XFETKMM on cluster j-MS09R64S8EF
+[2021-07-13 00:48:25,692] {emr_base.py:68} INFO - Job flow currently RUNNING
+[2021-07-13 00:49:25,685] {emr_step.py:75} INFO - Poking step s-3GG9I4XFETKMM on cluster j-MS09R64S8EF
+[2021-07-13 00:49:26,186] {emr_base.py:68} INFO - Job flow currently RUNNING
+[2021-07-13 00:50:26,148] {emr_step.py:75} INFO - Poking step s-3GG9I4XFETKMM on cluster j-MS09R64S8EF
+[2021-07-13 00:50:26,579] {emr_base.py:68} INFO - Job flow currently COMPLETED
+[2021-07-13 00:50:26,580] {base.py:243} INFO - Success criteria met. Exiting.
+[2021-07-13 00:50:26,603] {taskinstance.py:1191} INFO - Marking task as SUCCESS. dag_id=Spark_S3_ETL, task_id=watch_step_etl, execution_date=20210713T003908, start_date=20210713T003920, end_date=20210713T005026
+[2021-07-13 00:50:26,641] {taskinstance.py:1245} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2021-07-13 00:50:26,688] {local_task_job.py:151} INFO - Task exited with return code 0

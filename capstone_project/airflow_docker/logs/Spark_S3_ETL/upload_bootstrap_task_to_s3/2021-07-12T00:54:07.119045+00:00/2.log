@@ -1,0 +1,27 @@
+[2021-07-13 00:19:12,273] {taskinstance.py:876} INFO - Dependencies all met for <TaskInstance: Spark_S3_ETL.upload_bootstrap_task_to_s3 2021-07-12T00:54:07.119045+00:00 [queued]>
+[2021-07-13 00:19:12,338] {taskinstance.py:876} INFO - Dependencies all met for <TaskInstance: Spark_S3_ETL.upload_bootstrap_task_to_s3 2021-07-12T00:54:07.119045+00:00 [queued]>
+[2021-07-13 00:19:12,340] {taskinstance.py:1067} INFO - 
+--------------------------------------------------------------------------------
+[2021-07-13 00:19:12,342] {taskinstance.py:1068} INFO - Starting attempt 2 of 2
+[2021-07-13 00:19:12,355] {taskinstance.py:1069} INFO - 
+--------------------------------------------------------------------------------
+[2021-07-13 00:19:12,417] {taskinstance.py:1087} INFO - Executing <Task(PythonOperator): upload_bootstrap_task_to_s3> on 2021-07-12T00:54:07.119045+00:00
+[2021-07-13 00:19:12,476] {standard_task_runner.py:52} INFO - Started process 2353 to run task
+[2021-07-13 00:19:12,496] {standard_task_runner.py:76} INFO - Running: ['***', 'tasks', 'run', 'Spark_S3_ETL', 'upload_bootstrap_task_to_s3', '2021-07-12T00:54:07.119045+00:00', '--job-id', '57', '--pool', 'default_pool', '--raw', '--subdir', 'DAGS_FOLDER/dag.py', '--cfg-path', '/tmp/tmpaxnkc08u', '--error-file', '/tmp/tmpd54kjjxt']
+[2021-07-13 00:19:12,505] {standard_task_runner.py:77} INFO - Job 57: Subtask upload_bootstrap_task_to_s3
+[2021-07-13 00:19:12,763] {logging_mixin.py:104} INFO - Running <TaskInstance: Spark_S3_ETL.upload_bootstrap_task_to_s3 2021-07-12T00:54:07.119045+00:00 [running]> on host 3eb1e029fb42
+[2021-07-13 00:19:13,070] {taskinstance.py:1282} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=CapstoneProject
+AIRFLOW_CTX_DAG_ID=Spark_S3_ETL
+AIRFLOW_CTX_TASK_ID=upload_bootstrap_task_to_s3
+AIRFLOW_CTX_EXECUTION_DATE=2021-07-12T00:54:07.119045+00:00
+AIRFLOW_CTX_DAG_RUN_ID=manual__2021-07-12T00:54:07.119045+00:00
+[2021-07-13 00:19:13,081] {base_aws.py:368} INFO - Airflow Connection: aws_conn_id=aws_credentials
+[2021-07-13 00:19:13,116] {base_aws.py:166} INFO - Credentials retrieved from login
+[2021-07-13 00:19:13,126] {base_aws.py:82} INFO - Retrieving region_name from Connection.extra_config['region_name']
+[2021-07-13 00:19:13,129] {base_aws.py:87} INFO - Creating session with aws_access_key_id=AKIASWAINSLNFO6ZMHMS region_name=us-east-1
+[2021-07-13 00:19:13,345] {base_aws.py:157} INFO - role_arn is None
+[2021-07-13 00:19:15,290] {python.py:151} INFO - Done. Returned value was: None
+[2021-07-13 00:19:15,371] {taskinstance.py:1191} INFO - Marking task as SUCCESS. dag_id=Spark_S3_ETL, task_id=upload_bootstrap_task_to_s3, execution_date=20210712T005407, start_date=20210713T001912, end_date=20210713T001915
+[2021-07-13 00:19:15,567] {taskinstance.py:1245} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2021-07-13 00:19:15,663] {local_task_job.py:151} INFO - Task exited with return code 0
