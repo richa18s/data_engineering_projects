@@ -1,5 +1,5 @@
 ## Purpose
-The purpose of this project is to create a dataset to ease query for jobs. For that we don't need normalized schema, instead star schema is created because of it's scalability in terms of reading and querying.
+The purpose of this project is to create a dataset to ease query for jobs. For that we don't need normalized schema, instead star schema is created because of it's scalability in terms of reading and querying. This star schema can be further modified to create more summarized data such as OLAP cubes for BI and analytics.
 
 ## Scope 
 The scope of this project is to analyze the raw data for immigration, airlines, states provided/gathered from the sources mentioned below. Transform and clean the data to load into a schema in s3. 
@@ -49,8 +49,8 @@ Following diagram shows the relationship amoung dimensions and fact, along with 
 This pipeline will use spark to model the data into data model above. The source files are placed in s3 bucket (parquet format) and to be transformed into star schema using Spark and EMR clusters. <br>
 
 Since we are dealing with millions of records here and reading the data from data files, spark was a clear choice here as it support wide range of data formats and also the in memory processing is much faster. With pyspark it's easy to use dataframe APIs for processing large chunk of structured or semi-structured data.<br><br>
-With spark we just need the cluster for it's processing power and for that EMR was an easy choice. EMR clusters are easy to setup, can scale up and down depending on the workload and it has very good integration with APACHE AIRFLOW which is used as orchestrator for this project.<br><br>
-S3 is used for creating schema on read. It's easy to setup and easily accessible from EMR clusters.<br>
+With spark we just need the cluster for it's processing power and for that EMR was an obvious choice. EMR clusters are easy to setup, can scale up and down depending on the workload and it has very good integration with APACHE AIRFLOW which is used as orchestrator for this project.<br><br>
+S3 is used for creating schema on read. It's setup is straightforward and easily accessible from EMR clusters.<br>
 
 AWS Cluster :
 - Cluster : EMR (m5.xlarge) <br>
@@ -277,14 +277,14 @@ Spark logs are automatically saved in s3 bucket, this is taken care by specifyin
 Data pipeline is triggered externally for now since this is just a sample project to show the creation of ETL end to end.
 Here is what project structure looks like :
 
-1) **CapstoneProject** : contains ETL code in python
-    - scripts : etl code to read, tramsform, write in s3, also validation code
-    - conf : contains config file
+1) **CapstoneProject/** : contains ETL code in python
+    - scripts/ : etl code to read, tramsform, write in s3, also validation code
+    - conf/ : contains config file
     - main.py : invokes etl process
-    - validator.py invokes data validator post etl is complete
-2) **dags** : contains airflow dags
-3) **logs** : contains airflow workflow logs
-4) **plugins** : contains airflow helpers and operators, we did not create any custom operators for this project though
+    - validator.py : invokes data validator post etl is complete
+2) **dags/** : contains airflow dags
+3) **logs/** : contains airflow workflow logs
+4) **plugins/** : contains airflow helpers and operators, we did not create any custom operators for this project though
 
 
 
